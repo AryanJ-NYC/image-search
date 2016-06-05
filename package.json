@@ -1,0 +1,22 @@
+{
+  "name": "image-search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AryanJ-NYC/image-search.git"
+  },
+  "author": "Aryan Jabbari <Aryan.Jabbari21@Qmail.cuny.edu>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AryanJ-NYC/image-search/issues"
+  },
+  "homepage": "https://github.com/AryanJ-NYC/image-search#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
