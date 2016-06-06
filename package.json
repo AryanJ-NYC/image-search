@@ -16,6 +16,9 @@
     "url": "https://github.com/AryanJ-NYC/image-search/issues"
   },
   "homepage": "https://github.com/AryanJ-NYC/image-search#readme",
+  "devDependencies": {
+    "dotenv": "^2.0.0"
+  },
   "dependencies": {
     "express": "^4.13.4"
   }
