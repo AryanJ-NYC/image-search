@@ -4,7 +4,7 @@ const routes = require('express').Router(),
       Searchlog = require('./Searchlog');
 
 routes
-.get('/imagesearch/:keyword', function (req, res) {
+.get('/api/imagesearch/:keyword', function (req, res) {
   let offset = req.query.offset || 1,
       keyword = req.params.keyword,
       searchlog = new Searchlog({ keyword: keyword });
@@ -37,7 +37,7 @@ routes
     });
   });
 })
-.get('/latest/imagesearch', function (req, res) {
+.get('/api/latest/imagesearch', function (req, res) {
   Searchlog.find({}, '-_id keyword date', function (err, searchlogs) {
     if (err) {
       console.error(err.message);
@@ -46,6 +46,17 @@ routes
       res.json(searchlogs);
     }
   });
+})
+.get('*', function (req, res) {
+  let html = `
+  <h1>Search for images</h1>
+  <p>For any keyword you'd like to search, go to <code>http://${req.hostname}/api/imagesearch/keyword</code>
+  </br>to view results in JSON format.</p>
+  <p>To use an offset of 10, for example, end your request with <code>?offset=10</code>:
+  </br><code>http://${req.hostname}/api/imagesearch/keyword?offset=10</code></p>
+  <p>For the latest image searches, go to <code>http://${req.hostname}/api/latest/imagesearch</code>.</p>
+  <p>View the code at my <a href="https://github.com/AryanJ-NYC/image-search">GitHub repo</a>.`;
+  res.send(html);
 });
 
 module.exports = routes;
