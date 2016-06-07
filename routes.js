@@ -35,6 +35,15 @@ routes
       res.json(images);
     });
   });
+})
+.get('/latest/imagesearch', function (req, res) {
+  Searchlog.find({}, '-_id keyword date', function (err, searchlogs) {
+    if (err) {
+      console.log("Error finding latest searches.");
+    } else {
+      res.json(searchlogs);
+    }
+  });
 });
 
 module.exports = routes;
