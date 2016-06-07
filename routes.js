@@ -10,7 +10,8 @@ routes
       searchlog = new Searchlog({ keyword: keyword });
   searchlog.save(function (err) {
     if (err) {
-      console.error("There was an error in saving the searchlog.");
+      console.error();
+      res.json({ error: "There was an error in saving the searchlog." });
     }
   });
   https
@@ -39,7 +40,8 @@ routes
 .get('/latest/imagesearch', function (req, res) {
   Searchlog.find({}, '-_id keyword date', function (err, searchlogs) {
     if (err) {
-      console.log("Error finding latest searches.");
+      console.error(err.message);
+      res.json({ error: "There was an error searching the database" });
     } else {
       res.json(searchlogs);
     }
