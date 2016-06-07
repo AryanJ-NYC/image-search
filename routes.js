@@ -4,7 +4,7 @@ const express = require('express'),
       https = require('https');
 
 routes
-.get('/api/imagesearch/:keyword', function (req, res) {
+.get('/imagesearch/:keyword', function (req, res) {
   req.query.offset = req.query.offset || 1;
   https
   .get(`https://www.googleapis.com/customsearch/v1?q=${req.params.keyword}&searchType=image&key=${process.env.GOOGLE_CUSTOM_SEARCH_KEY}&cx=${process.env.cx}&start=${req.query.offset}`, function (result) {
